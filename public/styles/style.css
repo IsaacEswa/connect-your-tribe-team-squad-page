@@ -24,10 +24,10 @@ ul {
 .sort-items::after {
     content: "";
     position: absolute;
-    bottom: -0.5em;
-    left: 0;
-    width: 100%;
-    border-bottom: .5px solid black;
+    top: 0;
+    right: -1em;
+    height: 100%;
+    border-right: .5px solid black;
 }
 
 .sorting-active {
