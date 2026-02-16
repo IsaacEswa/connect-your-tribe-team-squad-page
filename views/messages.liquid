@@ -1,0 +1,11 @@
+{% for message in messages %}
+<p>{{ message }}</p>
+{% endfor %}
+
+<form action="/messages" method="POST">
+    <label>
+        Message
+        <textarea name="message"></textarea>
+    </label>
+    <button type="submit">Verzenden</button>
+</form>
