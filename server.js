@@ -81,7 +81,7 @@ app.post('/', async function (request, response) {
 })
 
 
-app.set('port', process.env.PORT || 8000)
+app.set('port', process.env.PORT || 8001)
 
 if (teamName == '') {
   console.log('Voeg eerst de naam van jullie team in de code toe.')
