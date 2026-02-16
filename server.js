@@ -6,6 +6,19 @@ import { Liquid } from 'liquidjs';
 // Vul hier jullie team naam in
 const teamName = 'Joy';
 
+const params = {
+  'filter[cohort]': '2526',
+  'filter[tribe][name]': 'FDND Jaar 1'
+}
+const squadResponse = await fetch('https://fdnd.directus.app/items/squad?' + new URLSearchParams(params))
+
+// Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
+const squadResponseJSON = await squadResponse.json()
+
+// Controleer eventueel de data in je console
+// (Let op: dit is _niet_ de console van je browser, maar van NodeJS, in je terminal)
+// console.log(squadResponseJSON)
+
 
 const app = express()
 
@@ -25,8 +38,26 @@ app.get('/', async function (request, response) {
   // Deze tabel wordt gedeeld door iedereen, dus verzin zelf een handig filter,
   // bijvoorbeeld je teamnaam, je projectnaam, je person ID, de datum van vandaag, etc..
   const params = {
-    'filter[for]': `Team ${teamName}`,
+    // 'filter[for]': `Team ${teamName}`,
+
+    // Sorteer op naam
+    'sort': 'name',
+
+    // Geef aan welke data je per persoon wil terugkrijgen
+    'fields': '*,squads.*',
+
+    // Combineer meerdere filters
+    'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+    // Filter eventueel alleen op een bepaalde squad
+    // 'filter[squads][squad_id][name]': '1I',
+    // 'filter[squads][squad_id][name]': '1J',
+    'filter[squads][squad_id][cohort]': '2526'
   }
+
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+
+  // En haal daarvan de JSON op
+  const personResponseJSON = await personResponse.json()
 
   // Maak hiermee de URL aan, zoals we dat ook in de browser deden
   const apiURL = 'https://fdnd.directus.app/items/messages?' + new URLSearchParams(params)
@@ -47,7 +78,9 @@ app.get('/', async function (request, response) {
   // En render de view met de messages
   response.render('index.liquid', {
     teamName: teamName,
-    messages: messagesResponseJSON.data
+    messages: messagesResponseJSON.data,
+    persons: personResponseJSON.data,
+    squads: squadResponseJSON.data
   })
 })
 
@@ -81,7 +114,7 @@ app.post('/', async function (request, response) {
 })
 
 
-app.set('port', process.env.PORT || 8000)
+app.set('port', process.env.PORT || 8001)
 
 if (teamName == '') {
   console.log('Voeg eerst de naam van jullie team in de code toe.')
@@ -90,3 +123,76 @@ if (teamName == '') {
     console.log(`Application started on http://localhost:${app.get('port')}`)
   })
 }
+
+
+
+
+
+//############################### Seb ######################################
+app.get('/1I', async function (request, response) {
+
+  // Haal alle personen uit de WHOIS API op, van dit jaar, gesorteerd op naam
+  const params = {
+    // Sorteer op naam
+    'sort': 'name',
+
+    // Geef aan welke data je per persoon wil terugkrijgen
+    'fields': '*,squads.*',
+
+    // Combineer meerdere filters
+    'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+    // Filter eventueel alleen op een bepaalde squad
+    'filter[squads][squad_id][name]': '1I',
+    // 'filter[squads][squad_id][name]': '1J',
+    'filter[squads][squad_id][cohort]': '2526',
+    'filter[squads][squad_id][_nnull]':'true'
+
+  }
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+
+  // En haal daarvan de JSON op
+  const personResponseJSON = await personResponse.json()
+
+  // personResponseJSON bevat gegevens van alle personen uit alle squads van dit jaar
+  // Toon eventueel alle data in de console
+  // console.log(personResponseJSON)
+
+  // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+  // Geef ook de eerder opgehaalde squad data mee aan de view
+  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+})
+
+
+app.get('/1J', async function (request, response) {
+
+  // Haal alle personen uit de WHOIS API op, van dit jaar, gesorteerd op naam
+  const params = {
+    // Sorteer op naam
+    'sort': 'name',
+
+    // Geef aan welke data je per persoon wil terugkrijgen
+    'fields': '*,squads.*',
+
+    // Combineer meerdere filters
+    'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+    // Filter eventueel alleen op een bepaalde squad
+    'filter[squads][squad_id][name]': '1J',
+    // 'filter[squads][squad_id][name]': '1J',
+    'filter[squads][squad_id][cohort]': '2526',
+    'filter[squads][squad_id][_nnull]':'true'
+
+  }
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+
+  // En haal daarvan de JSON op
+  const personResponseJSON = await personResponse.json()
+
+  // personResponseJSON bevat gegevens van alle personen uit alle squads van dit jaar
+  // Toon eventueel alle data in de console
+  // console.log(personResponseJSON)
+
+  // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+  // Geef ook de eerder opgehaalde squad data mee aan de view
+  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+})
+//########################################################################
