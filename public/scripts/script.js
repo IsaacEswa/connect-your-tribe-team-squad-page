@@ -108,3 +108,23 @@ views.forEach(link => {
         link.classList.add('sorting-active');
     }
 });
+
+
+
+
+//######################## Seb ################################
+
+let dark = document.querySelector('.1j');
+let light = document.querySelector('.1i')
+
+dark.addEventListener('click', function(){
+    dark.classList.add('dark-color')
+    light.classList.add('opacity-text')
+    dark.classList.remove('opacity-text')
+})
+
+light.addEventListener('click', function(){
+    dark.classList.remove('dark-color')
+    dark.classList.add('opacity-text')
+    light.classList.remove('opacity-text')
+})
