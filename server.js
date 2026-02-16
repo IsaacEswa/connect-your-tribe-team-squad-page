@@ -4,7 +4,7 @@ import { Liquid } from 'liquidjs';
 
 
 // Vul hier jullie team naam in
-const teamName = '';
+const teamName = 'Joy';
 
 
 const app = express()
@@ -12,11 +12,11 @@ const app = express()
 app.use(express.static('public'))
 
 const engine = new Liquid();
-app.engine('liquid', engine.express()); 
+app.engine('liquid', engine.express());
 
 app.set('views', './views')
 
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
 
 app.get('/', async function (request, response) {
