@@ -109,3 +109,29 @@ ul {
     margin: 3em;
 
 }
+
+.filter-section{
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 3em;
+
+    div{
+        display: flex;
+        justify-content: center;
+
+        a{
+            text-decoration: none;
+            color: black;
+            padding-inline: 1rem;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+
+        a:nth-of-type(2){
+            border-left: 1px black solid;
+        }
+    }
+}
