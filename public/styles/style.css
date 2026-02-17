@@ -21,13 +21,32 @@ ul {
     }
 }
 
-.sort-items::after {
-    content: "";
-    position: absolute;
+.sort-section {
+    position: fixed;
     top: 0;
-    right: -1em;
-    height: 100%;
-    border-right: .5px solid black;
+    left: 0;
+    background-color: white;
+    margin: 3em;
+
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.sort{
+    display: flex;
+    flex-direction: column;
+}
+
+.sort-items {
+   display: flex;
+   flex-direction: column;
+    padding-right: 1.5rem;
+    border-right: 1px solid black;
+    height: 80px;
+}
+
+.sort-order{
+    height: 10px;
 }
 
 .sorting-active {
