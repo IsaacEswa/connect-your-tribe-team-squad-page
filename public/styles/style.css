@@ -1,6 +1,21 @@
+
+html {
+    --color:black;  /*custom properties voor de kleuren om om te draaien hier onder*/
+    --background:white;
+}
+
+html:has( .squad1j.active ) { /* draait de kleuren om wanner de squadij de .active class er op heeft.*/
+    --color:white;
+    --background:black;
+}
+
+
 body {
     height: 200vh;
     /*to make the page scrollable */
+
+    background: var(--background);
+    color:var(--color);
 }
 
 ul {
@@ -9,7 +24,7 @@ ul {
 
     a {
         text-decoration: none;
-        color: black;
+        color: var(--color);
         transition: .3s;
 
     }
@@ -27,7 +42,7 @@ ul {
     bottom: -0.5em;
     left: 0;
     width: 100%;
-    border-bottom: .5px solid black;
+    border-bottom: .5px solid var(--color);
 }
 
 .sorting-active {
@@ -105,7 +120,7 @@ ul {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: white;
+    /* background-color: var(--background); */
     margin: 3em;
 
 }
@@ -122,26 +137,41 @@ ul {
 
         a{
             text-decoration: none;
-            color: black;
+            color: var(--color);
             padding-inline: 1rem;
             font-size: 1.5rem;
+
+            &.active {
+                font-weight: 600;
+                text-decoration: none;
+                cursor:default;
+            }
 
             &:hover{
                 text-decoration: underline 1px solid;
             }
         }
 
-        a:nth-of-type(2){
-            border-left: 1px rgba(0, 0, 0, 0.5) solid;
+        a:nth-of-type(2) {
+            border-left: 1px var(--color) solid;
         }
     }
-}
 
-body:has(.dark-color) a{
-    background-color: black;
-    color: white;
-}
+    .squadall{
+        text-decoration: none;
+        color: var(--color);
+        padding-inline: 1rem;
+        display: flex;
+        justify-content: center;
 
-.opacity-text{
-    color: rgba(0, 0, 0, 0.5);
+        &.active {
+            font-weight: 600;
+            text-decoration: none;
+            cursor:default;
+        }
+
+        &:hover{
+            text-decoration: underline 1px solid;
+        }
+    }
 }

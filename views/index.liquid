@@ -32,9 +32,31 @@
   <section class="filter-section">
     <h2>Kies squad</h2>
     <div>
-      <a href="/1I" class="1i">1I</a>
-      <a href="/1J" class="1j">1J</a>
+
+      {% if squad == '1I' %} 
+        {% comment %} <a href="/" class="squadall">Beide</a> {% endcomment %}
+        <a href="/1I" class="squad1i active">1I</a>
+        <a href="/1J" class="squad1j">1J</a>
+      {% elsif squad == "1J" %}
+        {% comment %} <a href="/" class="squadall">Beide</a> {% endcomment %}
+        <a href="/1I" class="squad1i">1I</a>
+        <a href="/1J" class="squad1j active">1J</a>
+      {% else %}
+        {% comment %} <a href="/" class="squadall active">Beide</a> {% endcomment %}
+        <a href="/1I" class="squad1i">1I</a>
+        <a href="/1J" class="squad1j">1J</a>  
+      {% endif %}
+
     </div>
+
+      {% if squad == '1I' %}
+        <a href="/" class="squadall">Beide</a>
+      {% elsif squad == "1J" %}
+        <a href="/" class="squadall">Beide</a>
+      {% else %}
+        <a href="/" class="squadall active">Beide</a>
+      {% endif %}
+
   </section>
 
   {% comment %} This is the carousel section {% endcomment %}
