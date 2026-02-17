@@ -104,23 +104,17 @@ ul {
     transform: translateY(-1em);
 }
 
-.inner-content {
-    display: flex;
-    /* margin: auto; */
-    justify-content: center;
-
-    h1 {
-        position: fixed;
-        bottom: 0;
-
-    }
+h1 {
+    position: fixed;
+    margin: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .sort-section {
     position: fixed;
     top: 0;
     left: 0;
-    /* background-color: var(--background); */
     margin: 3em;
 
 }
