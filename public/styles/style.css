@@ -29,23 +29,19 @@ ul {
 
     }
 
-    a:hover {
-        font-weight: bold;
-
-        /* text-decoration: underline; */
-    }
+  
 }
 
 .sort-section {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: white;
     margin: 3em;
 
     display: flex;
     align-items: center;
     gap: 2rem;
+
 }
 .sort{
     display: flex;
@@ -58,16 +54,16 @@ ul {
     padding-right: 1.5rem;
     border-right: 1px solid black;
     height: 80px;
+
+    & :hover{
+    text-decoration: underline 1px solid;
+}
 }
 
 .sort-order{
     height: 10px;
 }
 
-.sorting-active {
-    font-weight: bold;
-    /* text-decoration: underline; */
-}
 
 .carousel {
     position: fixed;
