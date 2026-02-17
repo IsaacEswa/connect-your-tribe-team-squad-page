@@ -167,12 +167,15 @@
     </section>
   </section>
 
-  <form action="">
-    <label for="">
-      <input type="search" placeholder="Zoek...">
-    </label>
-  </form>
-
+  
+<form method="GET" action="/">
+  <input 
+    type="search" 
+    name="search" 
+    placeholder="Zoek..." 
+    value="{{ search }}"
+  >
+</form>
 </main>
 
 

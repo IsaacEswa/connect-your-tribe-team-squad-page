@@ -53,6 +53,9 @@ app.get('/', async function (request, response) {
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526'
   }
+   if (request.query.search) {
+    params['search'] = request.query.search
+  }
     if (request.query.sort == 'name') {
     // Als we op /?sorteer=andersom zitten, voeg dan sort=-name toe
     params['sort'] = 'name'
@@ -92,7 +95,8 @@ app.get('/', async function (request, response) {
     teamName: teamName,
     messages: messagesResponseJSON.data,
     persons: personResponseJSON.data,
-    squads: squadResponseJSON.data
+    squads: squadResponseJSON.data,
+    search: request.query.search || ''
   })
 })
 
@@ -212,7 +216,7 @@ app.get('/1J', async function (request, response) {
 
 //################### zoekfunctie #####################
 
-app.get('/', async function (request, response) {
+app.get('/search', async function (request, response) {
 
   // Haal alle personen uit de WHOIS API op, van dit jaar, gesorteerd op naam
   const params = {
