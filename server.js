@@ -41,7 +41,7 @@ app.get('/', async function (request, response) {
     // 'filter[for]': `Team ${teamName}`,
 
     // Sorteer op naam
-    'sort': 'name',
+    'sort': 'name', //als dit er niet is dan gaat naar id 
 
     // Geef aan welke data je per persoon wil terugkrijgen
     'fields': '*,squads.*',
@@ -53,6 +53,21 @@ app.get('/', async function (request, response) {
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526'
   }
+   if (request.query.search) {
+    params['search'] = request.query.search
+  }
+    if (request.query.sort == 'name') {
+    // Als we op /?sorteer=andersom zitten, voeg dan sort=-name toe
+    params['sort'] = 'name'
+ 
+  } else if (request.query.sort == 'birthdate') {
+    // En anders, voeg sort=name toe
+    params['sort'] = 'birthdate' //name word overschreven door bd
+  
+  } else if (request.query.sort == 'border-radius'){
+    params['sort'] = 'fav_border_radius' //deze moet de exact zijn van de db
+  }
+
 
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
 
@@ -80,7 +95,8 @@ app.get('/', async function (request, response) {
     teamName: teamName,
     messages: messagesResponseJSON.data,
     persons: personResponseJSON.data,
-    squads: squadResponseJSON.data
+    squads: squadResponseJSON.data,
+    search: request.query.search || ''
   })
 })
 
@@ -159,7 +175,7 @@ app.get('/1I', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data, squad: '1I'})
 })
 
 
@@ -193,6 +209,42 @@ app.get('/1J', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data, squad: '1J'})
 })
 //########################################################################
+
+
+//################### zoekfunctie #####################
+
+app.get('/search', async function (request, response) {
+
+  // Haal alle personen uit de WHOIS API op, van dit jaar, gesorteerd op naam
+  const params = {
+    // Sorteer op naam
+    'sort': 'name',
+
+    // Geef aan welke data je per persoon wil terugkrijgen
+    'fields': '*,squads.*',
+
+    // Combineer meerdere filters
+    'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
+
+    'filter[squads][squad_id][cohort]': '2526',
+    'filter[squads][squad_id][_nnull]':'true',
+
+    'search': 'Directus'
+
+  }
+  const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
+
+  // En haal daarvan de JSON op
+  const personResponseJSON = await personResponse.json()
+
+  // personResponseJSON bevat gegevens van alle personen uit alle squads van dit jaar
+  // Toon eventueel alle data in de console
+  // console.log(personResponseJSON)
+
+  // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
+  // Geef ook de eerder opgehaalde squad data mee aan de view
+  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data, squad: '1J'})
+})

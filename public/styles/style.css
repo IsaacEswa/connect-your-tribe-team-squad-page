@@ -1,6 +1,22 @@
+html {
+    --color: black;
+    /*custom properties voor de kleuren om om te draaien hier onder*/
+    --background: white;
+}
+
+html:has(.squad1j.active) {
+    /* draait de kleuren om wanner de squadij de .active class er op heeft.*/
+    --color: white;
+    --background: black;
+}
+
+
 body {
     height: 200vh;
     /*to make the page scrollable */
+
+    background: var(--background);
+    color: var(--color);
 }
 
 ul {
@@ -9,31 +25,47 @@ ul {
 
     a {
         text-decoration: none;
-        color: black;
+        color: var(--color);
         transition: .3s;
 
     }
 
-    a:hover {
-        font-weight: bold;
 
-        /* text-decoration: underline; */
+}
+
+.sort-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 3em;
+
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+}
+
+.sort {
+    display: flex;
+    flex-direction: column;
+}
+
+.sort-items {
+    display: flex;
+    flex-direction: column;
+    padding-right: 1.5rem;
+    border-right: 1px solid black;
+    height: 80px;
+
+    & :hover {
+        text-decoration: underline 1px solid;
     }
 }
 
-.sort-items::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: -1em;
-    height: 100%;
-    border-right: .5px solid black;
+.sort-order {
+    height: 10px;
 }
 
-.sorting-active {
-    font-weight: bold;
-    /* text-decoration: underline; */
-}
 
 .carousel {
     position: fixed;
@@ -90,23 +122,17 @@ ul {
     transform: translateY(-1em);
 }
 
-.inner-content {
-    display: flex;
-    /* margin: auto; */
-    justify-content: center;
-
-    h1 {
-        position: fixed;
-        bottom: 0;
-
-    }
+h1 {
+    position: fixed;
+    margin: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .sort-section {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: white;
     margin: 3em;
 
 }
@@ -123,7 +149,7 @@ ul {
 
         a {
             text-decoration: none;
-            color: black;
+            color: var(--color);
             padding-inline: 1rem;
             font-size: 1.5rem;
 

@@ -9,32 +9,55 @@
 
 <main>
 
-  <section class="inner-content">
-    <h1>Squad page</h1>
-    {% comment %} Hier komt Search bar "Zoek frontender..." {% endcomment %}
-  </section>
+
+  <h1>Squad page</h1>
+  {% comment %} Hier komt Search bar "Zoek frontender..." {% endcomment %}
 
   {% comment %} This is the Sort section {% endcomment %}
   <section class="sort-section">
-    <h2>Sorteren op</h2>
-    <ul class="sort-items">
-      <li><a href="/">Naam</a></li>
-      <li><a href="/birthdate">Leeftijd</a></li>
-      <li><a href="/border-radius">Afgeronde hoeken</a></li>
-    </ul>
+    <div class="sort">
+      <h2>Sorteren op</h2>
+      <ul class="sort-items">
 
-    <ul class="sort-order">
-      <li><a href="">↑</a></li>
-      <li><a href="">↓</a></li>
-    </ul>
+        <li><a href="/?sort=name">Naam</a></li>
+        <li><a href="/?sort=birthdate">Leeftijd</a></li>
+        <li><a href="/?sort=border-radius">Afgeronde hoeken</a></li>
+      </ul>
+
+      <ul class="sort-order">
+        <li><a href="">↑</a></li>
+        <li><a href="">↓</a></li>
+      </ul>
   </section>
 
   <section class="filter-section">
     <h2>Kies squad</h2>
     <div>
-      <a href="/1I" class="1i">1I</a>
-      <a href="/1J" class="1j">1J</a>
+
+      {% if squad == '1I' %}
+      {% comment %} <a href="/" class="squadall">Beide</a> {% endcomment %}
+      <a href="/1I" class="squad1i active">1I</a>
+      <a href="/1J" class="squad1j">1J</a>
+      {% elsif squad == "1J" %}
+      {% comment %} <a href="/" class="squadall">Beide</a> {% endcomment %}
+      <a href="/1I" class="squad1i">1I</a>
+      <a href="/1J" class="squad1j active">1J</a>
+      {% else %}
+      {% comment %} <a href="/" class="squadall active">Beide</a> {% endcomment %}
+      <a href="/1I" class="squad1i">1I</a>
+      <a href="/1J" class="squad1j">1J</a>
+      {% endif %}
+
     </div>
+
+    {% if squad == '1I' %}
+    <a href="/" class="squadall">Beide</a>
+    {% elsif squad == "1J" %}
+    <a href="/" class="squadall">Beide</a>
+    {% else %}
+    <a href="/" class="squadall active">Beide</a>
+    {% endif %}
+
   </section>
 
   {% comment %} This is the carousel section {% endcomment %}
@@ -159,6 +182,10 @@
     </section>
   </section>
 
+
+  <form method="GET" action="/">
+    <input type="search" name="search" placeholder="Zoek..." value="{{ search }}">
+  </form>
 </main>
 
 
