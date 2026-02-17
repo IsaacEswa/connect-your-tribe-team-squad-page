@@ -119,23 +119,17 @@ ul {
     transform: translateY(-1em);
 }
 
-.inner-content {
-    display: flex;
-    /* margin: auto; */
-    justify-content: center;
-
-    h1 {
-        position: fixed;
-        bottom: 0;
-
-    }
+h1 {
+    position: fixed;
+    margin: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .sort-section {
     position: fixed;
     top: 0;
     left: 0;
-    /* background-color: var(--background); */
     margin: 3em;
 
 }
@@ -188,5 +182,20 @@ ul {
         &:hover{
             text-decoration: underline 1px solid;
         }
+    }
+}
+
+form{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+
+    input{
+        appearance: none;
+        border: 1px solid var(--color);
+        background-color: var(--background);
+        padding: .5rem 1rem .5rem 1rem;
+        width: 30rem;
     }
 }
