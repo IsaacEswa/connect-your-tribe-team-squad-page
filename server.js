@@ -41,7 +41,7 @@ app.get('/', async function (request, response) {
     // 'filter[for]': `Team ${teamName}`,
 
     // Sorteer op naam
-    'sort': 'name',
+    'sort': 'name', //als dit er niet is dan gaat naar id 
 
     // Geef aan welke data je per persoon wil terugkrijgen
     'fields': '*,squads.*',
@@ -53,6 +53,18 @@ app.get('/', async function (request, response) {
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526'
   }
+    if (request.query.sort == 'name') {
+    // Als we op /?sorteer=andersom zitten, voeg dan sort=-name toe
+    params['sort'] = 'name'
+ 
+  } else if (request.query.sort == 'birthdate') {
+    // En anders, voeg sort=name toe
+    params['sort'] = 'birthdate' //name word overschreven door bd
+  
+  } else if (request.query.sort == 'border-radius'){
+    params['sort'] = 'fav_border_radius' //deze moet de exact zijn van de db
+  }
+
 
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
 

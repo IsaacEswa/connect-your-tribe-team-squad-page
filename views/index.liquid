@@ -15,16 +15,18 @@
 
   {% comment %} This is the Sort section {% endcomment %}
   <section class="sort-section">
+    <div class="sort">
     <h2>Sorteren op</h2>
     <ul class="sort-items">
-      <li><a href="/">Naam</a></li>
-      <li><a href="/birthdate">Leeftijd</a></li>
-      <li><a href="/border-radius">Afgeronde hoeken</a></li>
+      
+      <li><a href="/?sort=name">Naam</a></li>
+      <li><a href="/?sort=birthdate">Leeftijd</a></li>
+      <li><a href="/?sort=border-radius">Afgeronde hoeken</a></li>
     </ul>
-
+</div>
    <ul class="sort-order">
-      <li><a href="">↑</a></li>
-      <li><a href="">↓</a></li>
+      <li><a href="/?sort=-name">↑</a></li>
+      <li><a href="/?sort=name">↓</a></li>
     </ul>
   </section>
 
