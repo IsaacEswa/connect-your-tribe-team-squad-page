@@ -53,18 +53,18 @@ app.get('/', async function (request, response) {
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526'
   }
-   if (request.query.search) {
+  if (request.query.search) {
     params['search'] = request.query.search
   }
-    if (request.query.sort == 'name') {
+  if (request.query.sort == 'name') {
     // Als we op /?sorteer=andersom zitten, voeg dan sort=-name toe
     params['sort'] = 'name'
- 
+
   } else if (request.query.sort == 'birthdate') {
     // En anders, voeg sort=name toe
     params['sort'] = 'birthdate' //name word overschreven door bd
-  
-  } else if (request.query.sort == 'border-radius'){
+
+  } else if (request.query.sort == 'border-radius') {
     params['sort'] = 'fav_border_radius' //deze moet de exact zijn van de db
   }
 
@@ -160,7 +160,7 @@ app.get('/1I', async function (request, response) {
     // Filter eventueel alleen op een bepaalde squad
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526',
-    'filter[squads][squad_id][_nnull]':'true'
+    'filter[squads][squad_id][_nnull]': 'true'
 
   }
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
@@ -174,7 +174,7 @@ app.get('/1I', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data, squad: '1I'})
+  response.render('index.liquid', { persons: personResponseJSON.data, squads: squadResponseJSON.data, squad: '1I' })
 })
 
 
@@ -194,7 +194,7 @@ app.get('/1J', async function (request, response) {
     'filter[squads][squad_id][name]': '1J',
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526',
-    'filter[squads][squad_id][_nnull]':'true'
+    'filter[squads][squad_id][_nnull]': 'true'
 
   }
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
@@ -208,7 +208,7 @@ app.get('/1J', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data, squad: '1J'})
+  response.render('index.liquid', { persons: personResponseJSON.data, squads: squadResponseJSON.data, squad: '1J' })
 })
 //########################################################################
 
@@ -229,7 +229,7 @@ app.get('/search', async function (request, response) {
     'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
 
     'filter[squads][squad_id][cohort]': '2526',
-    'filter[squads][squad_id][_nnull]':'true',
+    'filter[squads][squad_id][_nnull]': 'true',
 
     'search': 'Directus'
 
@@ -245,7 +245,7 @@ app.get('/search', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data, squad: '1J'})
+  response.render('index.liquid', { persons: personResponseJSON.data, squads: squadResponseJSON.data, squad: '1J' })
 })
 
 //####################################################################
@@ -278,7 +278,7 @@ app.get('/', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('index.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  response.render('index.liquid', { persons: personResponseJSON.data, squads: squadResponseJSON.data })
 })
 
 app.get('/naam-Z-A', async function (request, response) {
@@ -308,7 +308,7 @@ app.get('/naam-Z-A', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('naamZ-A.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  response.render('naamZ-A.liquid', { persons: personResponseJSON.data, squads: squadResponseJSON.data })
 })
 
 //!!!!!!!!!!! Linked naar birthdate HHHHHHHHH
@@ -327,7 +327,7 @@ app.get('/geboorte-oud-jong', async function (request, response) {
     // Filter eventueel alleen op een bepaalde squad
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526',
-    'filter[birthdate][_nnull]':'true'
+    'filter[birthdate][_nnull]': 'true'
 
   }
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
@@ -341,7 +341,7 @@ app.get('/geboorte-oud-jong', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('birthdate.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  response.render('birthdate.liquid', { persons: personResponseJSON.data, squads: squadResponseJSON.data })
 })
 
 // //!!!!!!!!!!! Linked naar birthdate jong-oud HHHHHHHHH
@@ -360,7 +360,7 @@ app.get('/geboorte-jong-oud', async function (request, response) {
     // Filter eventueel alleen op een bepaalde squad
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526',
-    'filter[birthdate][_nnull]':'true'
+    'filter[birthdate][_nnull]': 'true'
 
   }
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
@@ -374,7 +374,7 @@ app.get('/geboorte-jong-oud', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('birthdateRev.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  response.render('birthdateRev.liquid', { persons: personResponseJSON.data, squads: squadResponseJSON.data })
 })
 
 //!!!!!!!!!!! Linked naar border HHHHHHHHH
@@ -393,7 +393,7 @@ app.get('/hoek-vierkant-rond', async function (request, response) {
     // Filter eventueel alleen op een bepaalde squad
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526',
-    'filter[fav_border_radius][_nnull]':'true'
+    'filter[fav_border_radius][_nnull]': 'true'
 
   }
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
@@ -407,7 +407,7 @@ app.get('/hoek-vierkant-rond', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('border.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  response.render('border.liquid', { persons: personResponseJSON.data, squads: squadResponseJSON.data })
 })
 
 //!!!!!!!!!!! Linked naar border reverse HHHHHHHHH
@@ -426,7 +426,7 @@ app.get('/hoek-rond-vierkant', async function (request, response) {
     // Filter eventueel alleen op een bepaalde squad
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526',
-    'filter[fav_border_radius][_nnull]':'true'
+    'filter[fav_border_radius][_nnull]': 'true'
   }
   const personResponse = await fetch('https://fdnd.directus.app/items/person/?' + new URLSearchParams(params))
 
@@ -439,5 +439,126 @@ app.get('/hoek-rond-vierkant', async function (request, response) {
 
   // Render index.liquid uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
   // Geef ook de eerder opgehaalde squad data mee aan de view
-  response.render('borderRev.liquid', {persons: personResponseJSON.data, squads: squadResponseJSON.data})
+  response.render('borderRev.liquid', { persons: personResponseJSON.data, squads: squadResponseJSON.data })
 })
+
+
+
+
+
+
+//################### likefunctie #####################
+app.get('/person/:id', async function (request, response) {
+
+
+
+  const personDetailResponse = await fetch('https://fdnd.directus.app/items/person/' + request.params.id)
+  const personDetailResponseJSON = await personDetailResponse.json()
+
+  const likesForPersonResponse = await fetch(`https://fdnd.directus.app/items/messages?filter[for]=Team ${teamName} / Person ${request.params.id} / Like`)
+  const likesForPersonResponseJSON = await likesForPersonResponse.json()
+
+  console.log('Likes found:', likesForPersonResponseJSON.data.length)
+
+
+  response.render('person.liquid', {
+    person: personDetailResponseJSON.data,
+    liked: likesForPersonResponseJSON.data.length == 1
+  })
+
+
+})
+
+
+app.post('/person/:id/like', async function (request, response) {
+  await fetch('https://fdnd.directus.app/items/messages', {
+    method: 'POST',
+    body: JSON.stringify({
+      for: `Team ${teamName} / Person ${request.params.id} / Like`,
+      from: '',
+      text: ''
+    }),
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  });
+
+  console.log('LIKE opgeslagen voor:', `Team ${teamName} / Person ${request.params.id} / Like`)
+
+
+  response.redirect(303, `/person/${request.params.id}`)
+})
+
+app.post('/person/:id/unlike', async function (request, response) {
+
+  const likesForPersonResponse = await fetch(`https://fdnd.directus.app/items/messages?filter[for]=Team ${teamName} / Person ${request.params.id} / Like`)
+  const likesForPersonResponseJSON = await likesForPersonResponse.json()
+  const likesForPersonResponseID = likesForPersonResponseJSON.data[0].id
+
+  await fetch(`https://fdnd.directus.app/items/messages/${likesForPersonResponseID}`, {
+    method: 'DELETE'
+  });
+
+  response.redirect(303, `/person/${request.params.id}`)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+// app.get('/242', async function (request, response) {
+//   const personDetailResponse = await fetch('https://fdnd.directus.app/items/person/' + request.params.id)
+//   const personDetailResponseJSON = await personDetailResponse.json()
+
+//   const likesForPersonResponse = await fetch(`https://fdnd.directus.app/items/messages?filter[for]=Team ${teamName} / Person ${request.params.id} / Like`)
+//   const likesForPersonResponseJSON = await likesForPersonResponse.json()
+
+//   console.log('Likes for person:', likesForPersonResponseJSON.data.length);
+
+//   response.render('index.liquid', {
+//     person: personDetailResponseJSON.data,
+//     liked: likesForPersonResponseJSON.data.length > 0
+//   })
+// })
+
+// app.post('/like', async function (request, response) {
+//   // console.log('Liking person with ID:', request.params.id);
+
+
+//   await fetch('https://fdnd.directus.app/items/messages', {
+//     method: 'POST',
+//     body: JSON.stringify({
+//       for: `Team ${teamName} / Person ${request.params.id} / Like`,
+//       from: '',
+//       text: ''
+//     }),
+//     headers: {
+//       'Content-Type': 'application/json;charset=UTF-8'
+//     }
+//   });
+
+//   response.redirect(303, `/`)
+// })
+
+// app.post('/unlike', async function (request, response) {
+//   //   console.log('Unliking person with ID:', request.params.id);
+//   // console.log(`https://fdnd.directus.app/items/messages?filter[for]=Team ${teamName} / Person ${request.params.id} / Like`);
+
+
+//   const likesForPersonResponse = await fetch(`https://fdnd.directus.app/items/messages?filter[for]=Team ${teamName} / Person ${request.params.id} / Like`)
+//   const likesForPersonResponseJSON = await likesForPersonResponse.json()
+//   const likesForPersonResponseID = likesForPersonResponseJSON.data[0].id
+
+//   await fetch(`https://fdnd.directus.app/items/messages/${likesForPersonResponseID}`, {
+//     method: 'DELETE'
+//   });
+
+//   response.redirect(303, `/`)
+// })

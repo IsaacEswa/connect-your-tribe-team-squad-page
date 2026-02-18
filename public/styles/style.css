@@ -42,10 +42,10 @@ ul {
     display: grid;
     grid-template-columns: 1fr auto;
 
-    .selected{
+    .selected {
         font-weight: 600;
         text-decoration: none;
-        cursor:default;
+        cursor: default;
     }
 }
 
@@ -66,15 +66,16 @@ ul {
 .sort-order {
     grid-row-start: 2;
     padding-left: 1rem;
-    li{
-        a{
+
+    li {
+        a {
             font-size: 1.5rem;
         }
 
-        .opacity-arrow{
+        .opacity-arrow {
             opacity: 50%;
 
-            &:hover{
+            &:hover {
                 opacity: 100%;
             }
         }
@@ -171,7 +172,7 @@ h1 {
             &.active {
                 font-weight: 600;
                 text-decoration: none;
-                cursor:default;
+                cursor: default;
             }
 
             &:hover {
@@ -184,7 +185,7 @@ h1 {
         }
     }
 
-    .squadall{
+    .squadall {
         text-decoration: none;
         color: var(--color);
         padding-inline: 1rem;
@@ -198,13 +199,13 @@ h1 {
         &.active {
             font-weight: 600;
             text-decoration: none;
-            cursor:default;
+            cursor: default;
         }
     }
 }
 
 /*----------- zoekbalk ----------*/
-form{
+/* form{
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
@@ -218,7 +219,7 @@ form{
         width: 30rem;
         color: var(--color)
     }
-}
+} */
 
 /* -------------- START LIKE FUNCTION -------------- */
 .like-container {

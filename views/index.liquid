@@ -1,70 +1,76 @@
 {% render 'partials/head.liquid' %}
- 
+
 <main>
-  
+
   <h1>Squad page</h1>
- 
+
+  {% comment %} {% if liked %}
+  <form method="post" action="/unlike">
+    <button type="submit" name="message" value="">Unlike 💔</button>
+    <input type="number" hidden name="personId" value="{{ person.id }}">
+  </form>
+  {% else %}
+  <form method="post" action="/like">
+    <button type="submit">Like ❤️</button>
+    <input type="number" hidden name="personId" value="{{ person.id }}">
+  </form>
+  {% endif %} {% endcomment %}
+
   {% comment %} This is the Sort section {% endcomment %}
   <section class="sort-section">
-      <h2>Sorteren op</h2>
-      <ul class="sort-items">
- 
-        <li><a class="selected" href="/">Naam</a></li>
-        <li><a href="/geboorte-oud-jong">Leeftijd</a></li>
-        <li><a href="/hoek-vierkant-rond">Afgeronde hoeken</a></li>
-      </ul>
- 
-      <ul class="sort-order">
-        <li><a href="/">↑</a></li>
-        <li><a class="opacity-arrow" href="/naam-Z-A">↓</a></li>
-      </ul>
+    <h2>Sorteren op</h2>
+    <ul class="sort-items">
+
+      <li><a class="selected" href="/">Naam</a></li>
+      <li><a href="/geboorte-oud-jong">Leeftijd</a></li>
+      <li><a href="/hoek-vierkant-rond">Afgeronde hoeken</a></li>
+    </ul>
+
+    <ul class="sort-order">
+      <li><a href="/">↑</a></li>
+      <li><a class="opacity-arrow" href="/naam-Z-A">↓</a></li>
+    </ul>
   </section>
- 
+
   <section class="filter-section">
     <h2>Kies squad</h2>
     <div>
- 
+
       {% if squad == '1I' %}
-        <a href="/1I" class="squad1i active">1I</a>
-        <a href="/1J" class="squad1j">1J</a>
+      <a href="/1I" class="squad1i active">1I</a>
+      <a href="/1J" class="squad1j">1J</a>
       {% elsif squad == "1J" %}
-        <a href="/1I" class="squad1i">1I</a>
-        <a href="/1J" class="squad1j active">1J</a>
+      <a href="/1I" class="squad1i">1I</a>
+      <a href="/1J" class="squad1j active">1J</a>
       {% else %}
-        <a href="/1I" class="squad1i">1I</a>
-        <a href="/1J" class="squad1j">1J</a>
+      <a href="/1I" class="squad1i">1I</a>
+      <a href="/1J" class="squad1j">1J</a>
       {% endif %}
- 
+
     </div>
- 
+
     {% if squad == '1I' %}
-      <a href="/" class="squadall">Beide</a>
+    <a href="/" class="squadall">Beide</a>
     {% elsif squad == "1J" %}
-      <a href="/" class="squadall">Beide</a>
+    <a href="/" class="squadall">Beide</a>
     {% else %}
-      <a href="/" class="squadall active">Beide</a>
+    <a href="/" class="squadall active">Beide</a>
     {% endif %}
- 
+
   </section>
- 
+
   {% comment %} This is the carousel section {% endcomment %}
   <section class="carousel">
     <section class="slider">
- 
+
       {% for person in persons %}
- 
+
       <article class="student-card" style="--fav-color: {{ person.fav_color }};">
-        <img
-          style="border-radius: {{ person.fav_border_radius }}px"
-          {% if person.mugshot %}
-            src="https://fdnd.directus.app/assets/{{ person.mugshot }}"
-          {% else %}
-            src="assets/stockprofilepicture.png"
-          {% endif %}
-          alt="Mugshot picture"
-        >
-          
- 
+        <img style="border-radius: {{ person.fav_border_radius }}px" {% if person.mugshot %}
+          src="https://fdnd.directus.app/assets/{{ person.mugshot }}" {% else %} src="assets/stockprofilepicture.png" {%
+          endif %} alt="Mugshot picture">
+
+
         <section class="student-information">
           <h3>{{ person.name }}</h3>
           <div class="like-container">
@@ -77,28 +83,27 @@
           </div>
         </section>
       </article>
- 
+
       {% endfor %}
     </section>
   </section>
- 
- 
+
   <form method="GET" action="/">
     <input type="search" name="search" placeholder="Zoek..." value="{{ search }}">
   </form>
 </main>
- 
- 
+
+
 {% comment %} GSAP AND SCROLL TRIGGER {% endcomment %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"
   integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"
   integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- 
- 
+
+
 <script src="/scripts/script.js"></script>
- 
+
 {% render 'partials/foot.liquid' %}
