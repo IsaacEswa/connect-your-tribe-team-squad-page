@@ -463,7 +463,7 @@ app.get('/person/:id', async function (request, response) {
 
   response.render('person.liquid', {
     person: personDetailResponseJSON.data,
-    liked: likesForPersonResponseJSON.data.length == 1
+    liked: likesForPersonResponseJSON.data.length > 0
   })
 
 
@@ -501,16 +501,6 @@ app.post('/person/:id/unlike', async function (request, response) {
 
   response.redirect(303, `/person/${request.params.id}`)
 })
-
-
-
-
-
-
-
-
-
-
 
 
 // app.get('/242', async function (request, response) {
