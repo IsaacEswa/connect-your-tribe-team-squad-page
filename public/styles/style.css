@@ -19,6 +19,14 @@ body {
     color: var(--color);
 }
 
+
+a{
+    text-decoration: none;
+    color: var(--color);
+    font-family: "poppins";
+}
+
+
 ul {
     list-style: none;
     line-height: 1.8;
