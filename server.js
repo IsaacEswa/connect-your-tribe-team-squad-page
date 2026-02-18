@@ -158,6 +158,8 @@ app.get('/1I', async function (request, response) {
     // Combineer meerdere filters
     'filter[squads][squad_id][tribe][name]': 'FDND Jaar 1',
     // Filter eventueel alleen op een bepaalde squad
+    'filter[squads][squad_id][name]': '1I',
+
     // 'filter[squads][squad_id][name]': '1J',
     'filter[squads][squad_id][cohort]': '2526',
     'filter[squads][squad_id][_nnull]':'true'
