@@ -487,6 +487,7 @@ app.post('/person/:id/like', async function (request, response) {
 
 
   response.redirect(303, `/person/${request.params.id}`)
+  // response.redirect(303, `/`)
 })
 
 app.post('/person/:id/unlike', async function (request, response) {
@@ -500,6 +501,8 @@ app.post('/person/:id/unlike', async function (request, response) {
   });
 
   response.redirect(303, `/person/${request.params.id}`)
+  // response.redirect(303, `/`)
+
 })
 
 

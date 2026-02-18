@@ -4,17 +4,17 @@
 
   <h1>Squad page</h1>
 
-  {% comment %} {% if liked %}
-  <form method="post" action="/unlike">
+  {% if liked %}
+  <form method="post" action="/person/242/unlike">
     <button type="submit" name="message" value="">Unlike 💔</button>
-    <input type="number" hidden name="personId" value="{{ person.id }}">
+    {% comment %} <input type="number" hidden name="personId" value="{{ person.id }}"> {% endcomment %}
   </form>
   {% else %}
-  <form method="post" action="/like">
+  <form method="post" action="/person/242/like">
     <button type="submit">Like ❤️</button>
-    <input type="number" hidden name="personId" value="{{ person.id }}">
+    {% comment %} <input type="number" hidden name="personId" value="{{ person.id }}"> {% endcomment %}
   </form>
-  {% endif %} {% endcomment %}
+  {% endif %}
 
   {% comment %} This is the Sort section {% endcomment %}
   <section class="sort-section">
