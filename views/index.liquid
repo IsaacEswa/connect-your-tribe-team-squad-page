@@ -66,10 +66,11 @@
       {% for person in persons %}
 
       <article class="student-card" style="--fav-color: {{ person.fav_color }};">
-        <img style="border-radius: {{ person.fav_border_radius }}px" {% if person.mugshot %}
-          src="https://fdnd.directus.app/assets/{{ person.mugshot }}" {% else %} src="assets/stockprofilepicture.png" {%
-          endif %} alt="Mugshot picture">
-
+        <a href="/person/{{ person.id }}">
+          <img style="border-radius: {{ person.fav_border_radius }}px" {% if person.mugshot %}
+            src="https://fdnd.directus.app/assets/{{ person.mugshot }}" {% else %} src="assets/stockprofilepicture.png"
+            {% endif %} alt="Mugshot picture">
+        </a>
 
         <section class="student-information">
           <h3>{{ person.name }}</h3>
