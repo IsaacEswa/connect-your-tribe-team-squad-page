@@ -20,7 +20,7 @@ body {
 }
 
 
-a{
+a {
     color: var(--color);
 }
 
@@ -150,7 +150,7 @@ h1 {
     left: 50%;
     transform: translateX(-50%);
     color: var(--color);
-   cursor: pointer;
+    cursor: pointer;
 }
 
 .sort-section {
@@ -212,21 +212,28 @@ h1 {
 }
 
 /*----------- zoekbalk ----------*/
-/* form{
+.search-form {
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 1rem;
+    bottom: 7rem;
 
-    input{
+    .searchbar {
         appearance: none;
-        border: 1px solid var(--color);
-        background-color: var(--background);
-        padding: .5rem 1rem .5rem 1rem;
-        width: 30rem;
-        color: var(--color)
+        /* border: 1px solid var(--color);
+        background-color: var(--background); */
+        /* padding: .5rem 1rem .5rem 1rem; */
+        width: 25em;
+        /* color: var(--color); */
+
+        background-color: rgba(0, 0, 0, 0.1);
+        border: none;
+        border-radius: 15px;
+        padding: .5em 1.5em .5em 1.5em;
+        font-size: 1em;
+
     }
-} */
+}
 
 /* -------------- START LIKE FUNCTION -------------- */
 .like-container {
