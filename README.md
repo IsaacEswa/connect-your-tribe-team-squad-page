@@ -1,6 +1,6 @@
 # Squad Page
 Ontwerp en maak samen met je team een website met NodeJS, Express, JSON en Liquid
-https://connect-your-tribe-team-squad-page-fis5.onrender.com
+- https://connect-your-tribe-team-squad-page-fis5.onrender.com
 
 ## Inhoudsopgave
 [**_Beschrijving_**](#beschrijving)<br/>
@@ -16,3 +16,4 @@ https://connect-your-tribe-team-squad-page-fis5.onrender.com
 
 
 ## Beschrijving
+Wij hebben samen een squadpage gemaakt met dynamische data adhv JSON API in Directus en Liquid gewerkt. 
