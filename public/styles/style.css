@@ -2,12 +2,14 @@ html {
     --color: black;
     /*custom properties voor de kleuren om om te draaien hier onder*/
     --background: white;
+    --searchColor: #e5e5e5;
 }
 
 html:has(.squad1j.active) {
     /* draait de kleuren om wanner de squadij de .active class er op heeft.*/
     --color: white;
     --background: black;
+    --searchColor: #e5e5e5;
 }
 
 
@@ -220,17 +222,17 @@ h1 {
 
     .searchbar {
         appearance: none;
-        /* border: 1px solid var(--color);
-        background-color: var(--background); */
-        /* padding: .5rem 1rem .5rem 1rem; */
         width: 25em;
-        /* color: var(--color); */
 
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: var(--searchColor);
         border: none;
         border-radius: 25px;
         padding: .5em 1.5em .5em 1.5em;
         font-size: 1em;
+
+        &:focus-visible{
+            outline: var(--background) auto 1px;
+        }
 
     }
 }
