@@ -254,3 +254,48 @@ h1 {
         transform: scale(1);
     }
 }
+
+
+
+/* -------------- person.liquid -------------- */
+
+.student-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 5rem;
+}
+
+.details-student-name {
+    width: 100%;
+    position: relative;
+    margin: 0;
+    text-align: center;
+}
+
+.details-student-image {
+    width: 25em;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.like-button {
+    background-color: transparent;
+    border: none;
+
+    svg {
+        fill: red;
+        width: 3em;
+    }
+}
+
+.back-link {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+
+    &:hover {
+        text-decoration: underline 1px solid;
+    }
+}
