@@ -19,6 +19,12 @@ body {
     color: var(--color);
 }
 
+
+a{
+    color: var(--color);
+}
+
+
 ul {
     list-style: none;
     line-height: 1.8;
@@ -143,6 +149,8 @@ h1 {
     margin: 2rem;
     left: 50%;
     transform: translateX(-50%);
+    color: var(--color);
+   cursor: pointer;
 }
 
 .sort-section {
@@ -150,7 +158,6 @@ h1 {
     top: 0;
     left: 0;
     margin: 3em;
-
 }
 
 .filter-section {
