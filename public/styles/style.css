@@ -283,17 +283,33 @@ h1 {
 .like-button {
     background-color: transparent;
     border: none;
+    font-size: 1.2em;
+
+    display: flex;
+    align-items: center;
+    gap: .5em;
 
     svg {
         fill: red;
-        width: 3em;
+        width: 1.2em;
+        transition: .2s;
     }
+
+    svg:hover {
+        scale: 1.2;
+    }
+
+    svg:active {
+        scale: .8;
+    }
+
 }
 
 .back-link {
     text-decoration: none;
     color: black;
-    font-size: 1.2em;
+    font-size: 1em;
+    font-style: italic;
 
     &:hover {
         text-decoration: underline 1px solid;
